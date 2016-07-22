@@ -9,31 +9,16 @@ import android.widget.TextView;
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    private Button oneBtn;
-    private Button twoBtn;
-    private Button threeBtn;
-    private Button fourBtn;
-    private Button fiveBtn;
-    private Button sixBtn;
-    private Button sevenBtn;
-    private Button eightBtn;
-    private Button nineBtn;
-    private Button zeroBtn;
-    private Button multiplyBtn;
-    private Button divideBtn;
-    private Button minusBtn;
-    private Button plusBtn;
-    private Button equalBtn;
-    private Button clearBtn;
-
+    private Button oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, zeroBtn,
+                    multiplyBtn, divideBtn, minusBtn, plusBtn, equalBtn, clearBtn ;
 
     String stringNum = "";
-    String stringNum2 = "";
     String stringOpr = "" ;
-    String opr;
 
     int int1 = 0;
     int result = 0;
+
+    boolean a = false;
 
     private TextView textView2;
     private TextView textView1;
@@ -177,7 +162,13 @@ public class CalculatorActivity extends AppCompatActivity {
                 stringOpr += stringNum + " " + "/";
                 textView1.setText(stringOpr);
                 int1 = Integer.parseInt(stringNum);
+
+                if (a) {
                 result = result / int1;
+                } else {
+                    result = int1;
+                    a = true;
+                }
                 stringNum = "";
             }
         });
@@ -188,9 +179,13 @@ public class CalculatorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 stringOpr += stringNum + " " + "*";
                 textView1.setText(stringOpr);
-                result =1;
                 int1 = Integer.parseInt(stringNum);
+
+                if (a){
                 result = result * int1;
+                } else {
+                    result = int1;
+                    a = true;}
                 stringNum = "";
             }
         });
@@ -213,6 +208,7 @@ public class CalculatorActivity extends AppCompatActivity {
                 stringOpr = "";
                 textView1.setText("");
                 textView2.setText("");
+                a = false;
             }
         });
 
